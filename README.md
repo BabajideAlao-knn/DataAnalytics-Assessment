@@ -17,6 +17,7 @@ Tables used:
 ### Q1. High-Value Customers with Multiple Products
 
 **Goal:** Find customers with at least one savings plan and one investment plan, both funded.  
+
 **Approach:**
 - Identify customers with `plan_type_id = 1` (savings) and `plan_type_id = 2` (investment).
 - Use the `confirmed_amount` field to determine deposits.
@@ -30,6 +31,7 @@ Tables used:
 - High: ≥10/month
 - Medium: 3–9/month
 - Low: ≤2/month
+  
 **Approach:**
 - Calculate number of months between first and last transaction per user.
 - Divide transaction count by month span.
@@ -40,6 +42,7 @@ Tables used:
 ### Q3. Account Inactivity Alert
 
 **Goal:** Find accounts (savings or investments) with no inflow in the last 365 days.
+
 **Approach:**
 - For `savings_savingsaccount`, use `transaction_date`.
 - For `plans_plan`, use `last_charge_date`.
@@ -51,6 +54,7 @@ Tables used:
 ### Q4. Customer Lifetime Value (CLV)
 
 **Goal:** Estimate CLV with this simplified formula:
+
 **Approach:**
 - Tenure is calculated using `created_on` from `users_customuser`.
 - Profit is 0.1% of each transaction (`confirmed_amount`).
